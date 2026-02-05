@@ -14,14 +14,7 @@ function App() {
               Shop
             </h1>
             <div className="flex items-center gap-4">
-              <a 
-                href="https://react.dev/reference/react/hooks" 
-                target="_blank" 
-                rel="noreferrer"
-                className="text-sm text-gray-500 hover:text-indigo-600 transition-colors hidden sm:block"
-              >
-                Learn Hooks
-              </a>
+             
               <CartIcon />
             </div>
           </div>
@@ -46,11 +39,11 @@ function App() {
         </main>
         
         <footer className="mt-12 py-8 text-center text-gray-500 text-sm">
-          Built with React Hooks, Vite & Tailwind CSS
+          Nhà phát triển: Trần Đỗ Phong Nhã - 2026
         </footer>
       </div>
     </ShopProvider>
-  );
+  )
 }
 
 export default App;
