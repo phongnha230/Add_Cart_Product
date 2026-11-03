@@ -6,7 +6,10 @@ const CartItem = memo(({ item, onUpdateQty, onRemove }) => {
   const subtotal = item.price * item.quantity;
 
   return (
-    <div className="flex flex-col sm:flex-row gap-3 sm:items-center justify-between p-3 rounded-lg border border-gray-100 bg-card hover:bg-muted/40 transition-colors">
+    <div 
+      data-testid="cart-item"
+      className="cart-item flex flex-col sm:flex-row gap-3 sm:items-center justify-between p-3 rounded-lg border border-gray-100 bg-card hover:bg-muted/40 transition-colors"
+    >
       {/* Product Image & Info */}
       <div className="flex items-center gap-3 min-w-0 flex-1">
         <div className="w-14 h-14 rounded-md overflow-hidden flex-shrink-0 bg-muted border">
@@ -56,15 +59,17 @@ const CartItem = memo(({ item, onUpdateQty, onRemove }) => {
         </div>
 
         <Button 
+          data-testid="remove-cart-item-btn"
           type="button"
           variant="ghost"
-          size="icon"
-          className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+          size="sm"
+          className="h-8 px-2 text-xs font-medium text-muted-foreground hover:text-destructive hover:bg-destructive/10 gap-1"
           onClick={() => onRemove(item.id)}
           title="Remove item"
           aria-label="Remove item"
         >
-          <Trash2 className="h-4 w-4" />
+          <Trash2 className="h-3.5 w-3.5" />
+          <span>Remove</span>
         </Button>
       </div>
     </div>

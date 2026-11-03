@@ -23,7 +23,10 @@ const ProductCard = memo(({ product, onAdd }) => {
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between">
+    <Card 
+      data-testid="product-card"
+      className="product-card overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between"
+    >
       <div>
         <div className="relative h-48 overflow-hidden bg-muted flex items-center justify-center">
           {!imageError ? (
@@ -79,6 +82,7 @@ const ProductCard = memo(({ product, onAdd }) => {
 
         {/* Add to Cart button */}
         <Button 
+          data-testid="add-to-cart-btn"
           onClick={handleAddToCart}
           className="shadow-md flex-1 sm:flex-initial gap-1.5"
         >
