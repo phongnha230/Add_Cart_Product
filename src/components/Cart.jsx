@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback } from 'react';
 import { useShop } from '../context/ShopContext';
 import CartItem from './CartItem';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart } from 'lucide-react';
@@ -75,9 +75,17 @@ const Cart = ({ isDrawer = false }) => {
         <div className="flex justify-between items-center w-full mb-4">
           <div>
             <span className="text-sm text-muted-foreground block">Total Cart Value</span>
-            <span className="text-xs text-muted-foreground">Includes all items</span>
+            <span className="text-xs text-muted-foreground">Tổng cộng tiền hàng</span>
           </div>
-          <span className="text-2xl font-bold text-primary">${total.toFixed(2)}</span>
+          <div className="flex items-baseline gap-1">
+            <span 
+              data-testid="cart-total-price" 
+              className="total-price text-2xl font-bold text-primary"
+            >
+              {total.toLocaleString('vi-VN')}
+            </span>
+            <span className="text-sm font-semibold text-primary">₫</span>
+          </div>
         </div>
         <Button className="w-full shadow-md" size="lg">
           Checkout Now

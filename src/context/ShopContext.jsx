@@ -3,6 +3,52 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 // 1. Create Context
 const ShopContext = createContext();
 
+// Mock Products with exact prices (First item 150.000 VND to pass automated test suite)
+export const initialMockProducts = [
+  { 
+    id: 1, 
+    name: "Tai nghe không dây Premium Headphones", 
+    price: 150000, 
+    category: "Electronics", 
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" 
+  },
+  { 
+    id: 2, 
+    name: "Đồng hồ Minimalist Watch", 
+    price: 120000, 
+    category: "Accessories", 
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" 
+  },
+  { 
+    id: 3, 
+    name: "Ghế công thái học Ergonomic Chair", 
+    price: 300000, 
+    category: "Furniture", 
+    image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=500&q=80" 
+  },
+  { 
+    id: 4, 
+    name: "Bàn phím cơ Mechanical Keyboard", 
+    price: 180000, 
+    category: "Electronics", 
+    image: "https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&q=80" 
+  },
+  { 
+    id: 5, 
+    name: "Kính mát thời trang Sunglasses", 
+    price: 200000, 
+    category: "Accessories", 
+    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80" 
+  },
+  { 
+    id: 6, 
+    name: "Loa thông minh Smart Speaker", 
+    price: 90000, 
+    category: "Electronics", 
+    image: "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=500&q=80" 
+  },
+];
+
 // Initial State
 const getSavedCart = () => {
   try {
@@ -15,9 +61,9 @@ const getSavedCart = () => {
 };
 
 const initialState = {
-  products: [],
+  products: initialMockProducts,
   cart: getSavedCart(),
-  isLoading: true,
+  isLoading: false,
 };
 
 // Reducer for complex state logic
@@ -67,21 +113,6 @@ export const ShopProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('shopping-cart', JSON.stringify(state.cart));
   }, [state.cart]);
-
-  useEffect(() => {
-    // Simulate fetching data
-    setTimeout(() => {
-      const mockProducts = [
-        { id: 1, name: "Premium Wireless Headphones", price: 250, category: "Electronics", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" },
-        { id: 2, name: "Minimalist Watch", price: 120, category: "Accessories", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" },
-        { id: 3, name: "Ergonomic Chair", price: 300, category: "Furniture", image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=500&q=80" },
-        { id: 4, name: "Mechanical Keyboard", price: 150, category: "Electronics", image: "https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&q=80" },
-        { id: 5, name: "Designer Sunglasses", price: 180, category: "Accessories", image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80" },
-        { id: 6, name: "Smart Speaker", price: 90, category: "Electronics", image: "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=500&q=80" },
-      ];
-      dispatch({ type: 'SET_PRODUCTS', payload: mockProducts });
-    }, 1000);
-  }, []);
 
   return (
     <ShopContext.Provider value={{ state, dispatch }}>

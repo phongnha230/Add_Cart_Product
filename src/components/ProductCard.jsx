@@ -48,8 +48,10 @@ const ProductCard = memo(({ product, onAdd }) => {
         </div>
         <CardContent className="p-5">
           <h3 className="text-lg font-bold mb-1">{product.name}</h3>
-          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">This is a premium product with excellent build quality.</p>
-          <span className="text-2xl font-bold text-primary">${product.price}</span>
+          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">Sản phẩm chính hãng với chất lượng hoàn thiện cao cấp.</p>
+          <span className="text-2xl font-bold text-primary">
+            {product.price.toLocaleString('vi-VN')} ₫
+          </span>
         </CardContent>
       </div>
 

@@ -24,10 +24,10 @@ const CartItem = memo(({ item, onUpdateQty, onRemove }) => {
             {item.name}
           </h4>
           <p className="text-xs text-muted-foreground">
-            Unit Price: <span className="font-medium text-foreground">${item.price}</span>
+            Đơn giá: <span className="font-medium text-foreground">{item.price.toLocaleString('vi-VN')} ₫</span>
           </p>
           <p className="text-xs font-semibold text-primary mt-0.5">
-            Subtotal: ${subtotal.toFixed(2)}
+            Thành tiền: {subtotal.toLocaleString('vi-VN')} ₫
           </p>
         </div>
       </div>
