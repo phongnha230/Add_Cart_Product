@@ -27,17 +27,19 @@ const shopReducer = (state, action) => {
       return { ...state, cart: action.payload };
     case 'SET_PRODUCTS':
       return { ...state, products: action.payload, isLoading: false };
-    case 'ADD_TO_CART':
+    case 'ADD_TO_CART': {
+      const addedQuantity = action.payload.quantity ? Number(action.payload.quantity) : 1;
       const existingItem = state.cart.find(item => item.id === action.payload.id);
       if (existingItem) {
         return {
           ...state,
           cart: state.cart.map(item =>
-            item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === action.payload.id ? { ...item, quantity: item.quantity + addedQuantity } : item
           ),
         };
       }
-      return { ...state, cart: [...state.cart, { ...action.payload, quantity: 1 }] };
+      return { ...state, cart: [...state.cart, { ...action.payload, quantity: addedQuantity }] };
+    }
     case 'REMOVE_FROM_CART':
       return {
         ...state,

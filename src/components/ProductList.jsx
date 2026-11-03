@@ -19,9 +19,9 @@ const ProductList = () => {
     return ['All', ...new Set(state.products.map(p => p.category))];
   }, [state.products]);
 
-  // Handler for adding to cart
-  const addToCart = (product) => {
-    dispatch({ type: 'ADD_TO_CART', payload: product });
+  // Handler for adding to cart with quantity
+  const addToCart = (product, quantity = 1) => {
+    dispatch({ type: 'ADD_TO_CART', payload: { ...product, quantity } });
   };
 
   if (state.isLoading) {
